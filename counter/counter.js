@@ -1,32 +1,30 @@
-let count = 0;
+let counter = 0;
 
 
-//select value and buttons
-const value = document.querySelector('#value');
-const btns = document.querySelector(".btn");
+
+function count() {
+    counter++;
+    document.querySelector('#value').innerHTML = counter;
+
+}
+
+function decr() {
+    counter--;
+    document.querySelector('#value').innerHTML = counter;
+
+}
 
 
-btns.forEach(function(btn){
-btn.addEventListener('click', function(e){
-    const styles = e.currentTarget.classList;
-    if(styles.contains("decrease")){
-        count--;
-    }
-    else if (styles.contains("increase")){
-        count++;
-    }
-    else {
-        count = 0;
-    }
-    if(count>0){
-        value.style.color = "green";
-    }
-    if(count<0){
-        value.style.color = "red"
-    }
-    else {
-        value.style.color = "#222";
-    }
-    value.textContent = count;
-})
-})
+function reset() {
+    counter = 0;
+    document.querySelector('#value').innerHTML = counter;
+
+}
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('#incr').onclick = count;
+    document.querySelector('#decr').onclick = decr;
+    document.querySelector('#reset').onclick = reset;
+});
